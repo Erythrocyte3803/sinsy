@@ -53,7 +53,6 @@ cai c ai
 sai s ai
 wai w ai
 an an
-ruan rw an
 ban b an
 pan p an
 man m an
@@ -86,6 +85,7 @@ san s an
 suan sw an
 xuan xv an
 ran r an
+ruan rw an
 wan w an
 yuan v an
 ang ang
@@ -166,13 +166,13 @@ ce c e
 se s e
 re r e
 e0 e0
-nue nv e0
 bie by e0
 pie py e0
 mie my e0
 die dy e0
 tie ty e0
 nie ny e0
+nue nv e0
 lie ly e0
 lue lw e0
 jie jy e0
@@ -184,7 +184,6 @@ xue xv e0
 ye y e0
 yue v e0
 ei ei
-rui rw ei
 bei b ei
 pei p ei
 mei m ei
@@ -210,9 +209,9 @@ zei z ei
 zui zw ei
 cui cw ei
 sui sw ei
+rui rw ei
 wei w ei
 en en
-run rw en
 ben b en
 pen p en
 men m en
@@ -240,6 +239,7 @@ cun cw en
 sen s en
 sun sw en
 ren r en
+run rw en
 wen w en
 en0 en0
 bian by en0
@@ -320,7 +320,6 @@ chi ch ir
 shi sh ir
 ri r ir
 o o
-ruo rw o
 bo bw o
 po pw o
 mo mw o
@@ -338,6 +337,7 @@ shuo shw o
 zuo zw o
 cuo cw o
 suo sw o
+ruo rw o
 wo w o
 ong ong
 dong d ong
@@ -382,7 +382,6 @@ qiu qy ou
 xiu xy ou
 rou r ou
 you y ou
-ru rw u
 u u
 bu bw u
 pu pw u
@@ -401,10 +400,11 @@ shu shw u
 zu zw u
 cu cw u
 su sw u
+ru rw u
 wu w u
-lv lv v0
-nv nv v0
 v0 v0
+nv nv v0
+lv lv v0
 ju jv v0
 qu qv v0
 xu xv v0
