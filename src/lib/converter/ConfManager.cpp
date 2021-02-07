@@ -48,6 +48,7 @@
 #include "ConfGroup.h"
 #include "util_converter.h"
 #include "JConf.h"
+#include "CConf.h"
 
 namespace sinsy
 {
@@ -63,13 +64,13 @@ const std::string CODE_SEPARATOR = "|";
 /*!
  constructor
  */
-ConfManager::ConfManager() : uJConf(NULL), sJConf(NULL), eJConf(NULL), jConfs(NULL)
+ConfManager::ConfManager() : uJConf(NULL), sJConf(NULL), eJConf(NULL), uCConf(NULL), confs(NULL)
 {
 }
 
 /*!
  destructor
-*/
+ */
 ConfManager::~ConfManager()
 {
    clear();
@@ -87,28 +88,28 @@ void ConfManager::clear()
    uJConf = NULL;
    sJConf = NULL;
    eJConf = NULL;
-   jConfs = NULL;
+   uCConf = NULL;
+   confs = NULL;
    confList.clear();
 }
 
 /*!
  @internal
 
- add Japanese conf
+ add conf
  */
-void ConfManager::addJConf(IConf* conf)
+void ConfManager::addConf(IConf* conf)
 {
-   if (!jConfs) {
-      jConfs = new ConfGroup();
-      deleteList.push_back(jConfs);
-      confList.push_back(jConfs);
+   if (!confs) {
+      confs = new ConfGroup();
+      deleteList.push_back(confs);
+      confList.push_back(confs);
    }
-   jConfs->add(conf);
+   confs->add(conf);
 }
 
 /*!
  set languages
- (Currently, you can set only Japanese (j))
  */
 bool ConfManager::setLanguages(const std::string& languages, const std::string& dirPath)
 {
@@ -138,7 +139,7 @@ bool ConfManager::setLanguages(const std::string& languages, const std::string& 
             uJConf = NULL;
             return false;
          }
-         addJConf(uJConf);
+         addConf(uJConf);
          deleteList.push_back(uJConf);
 
 
@@ -149,7 +150,7 @@ bool ConfManager::setLanguages(const std::string& languages, const std::string& 
             sJConf = NULL;
             return false;
          }
-         addJConf(sJConf);
+         addConf(sJConf);
          deleteList.push_back(sJConf);
 
          // euc-jp
@@ -159,8 +160,27 @@ bool ConfManager::setLanguages(const std::string& languages, const std::string& 
             eJConf = NULL;
             return false;
          }
-         addJConf(eJConf);
+         addConf(eJConf);
          deleteList.push_back(eJConf);
+
+         break;
+      }
+      case 'c' : { // Chinese
+         const std::string TABLE_UTF_8(dirPath + "/chinese.table"); // or use chinese-complete.table
+         const std::string CONF_UTF_8(dirPath + "/chinese.conf");
+         const std::string MACRON_TABLE(dirPath + "/chinese.macron");
+
+         uCConf = new CConf(UTF_8_STRS);
+
+         // utf-8
+         if (!uCConf->read(TABLE_UTF_8, CONF_UTF_8, MACRON_TABLE)) {
+            ERR_MSG("Cannot read Chinese table or config or macron file : " << TABLE_UTF_8 << ", " << CONF_UTF_8);
+            delete uCConf;
+            uCConf = NULL;
+            return false;
+         }
+         addConf(uCConf);
+         deleteList.push_back(uCConf);
 
          break;
       }

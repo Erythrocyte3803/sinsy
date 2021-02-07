@@ -2,6 +2,7 @@ AM_CPPFLAGS = -I @top_srcdir@/include \
               -I converter \
               -I hts_engine_API \
               -I japanese \
+              -I chinese \
               -I label \
               -I score \
               -I temporary \
@@ -32,6 +33,8 @@ libSinsy_a_SOURCES = Sinsy.cpp \
                      ./hts_engine_API/SynthConditionImpl.h \
                      ./japanese/JConf.cpp \
                      ./japanese/JConf.h \
+                     ./chinese/CConf.cpp \
+                     ./chinese/CConf.h \
                      ./label/ILabelOutput.h \
                      ./label/INoteLabel.h \
                      ./label/IPhonemeLabel.h \

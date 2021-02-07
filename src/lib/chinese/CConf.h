@@ -39,74 +39,69 @@
 /* POSSIBILITY OF SUCH DAMAGE.                                       */
 /* ----------------------------------------------------------------- */
 
-#ifndef SINSY_CONF_MANAGER_H_
-#define SINSY_CONF_MANAGER_H_
+#ifndef SINSY_C_CONF_H_
+#define SINSY_C_CONF_H_
 
+#include <string>
+#include <set>
 #include "IConf.h"
-#include "ConfGroup.h"
-#include "UnknownConf.h"
+#include "Configurations.h"
+#include "PhonemeTable.h"
+#include "MacronTable.h"
+#include "MultibyteCharRange.h"
 
 namespace sinsy
 {
-class Converter;
-class JConf;
-class CConf;
 
-class ConfManager
+class CConf : public IConf
 {
 public:
    //! constructor
-   ConfManager();
+   CConf(const std::string& enc);
 
    //! destructor
-   virtual ~ConfManager();
+   virtual ~CConf();
 
-   //! set confs to converter
-   bool setLanguages(const std::string& languages, const std::string& dirPath);
+   //! read phoneme table and config from files
+   bool read(const std::string& table, const std::string& conf, const std::string& macron);
 
-   //! set default confs
-   void setDefaultConfs(ConfGroup& confs) const;
+   //! convert lyrics to phonemes
+   virtual bool convert(const std::string& enc, ConvertableList::iterator begin, ConvertableList::iterator end) const;
+
+   //! get sil str
+   virtual std::string getSilStr() const;
+
+   //! check encoding
+   bool checkEncoding(const std::string& enc) const;
+
+   //! get multibyte char range
+   const MultibyteCharRange& getMultibyteCharRange() const;
 
 private:
    //! copy constructor (donot use)
-   ConfManager(const ConfManager&);
+   CConf(const CConf&);
 
    //! assignment operator (donot use)
-   ConfManager& operator=(const ConfManager&);
+   CConf& operator=(const CConf&);
 
-   //! clear all confs
-   void clear();
+   //! phoneme table
+   PhonemeTable phonemeTable;
 
-   //! add conf
-   void addConf(IConf* conf);
+   //! configure
+   Configurations config;
 
-   //! Japanese conf (UTF-8)
-   JConf* uJConf;
+   //! macron table
+   MacronTable macronTable;
 
-   //! Japanese conf (Shift_JIS)
-   JConf* sJConf;
+   //! ranges of multibyte chars
+   MultibyteCharRange multibyteCharRange;
 
-   //! Japanese conf (EUC-JP)
-   JConf* eJConf;
+   typedef std::set<std::string> Encodings;
 
-   //! Chinese conf (UTF-8)
-   CConf* uCConf;
-
-   //! confs
-   ConfGroup* confs;
-
-   //! conf for unknown language
-   const UnknownConf uConf;
-
-   typedef std::vector<IConf*> ConfList;
-
-   //! list of IConf
-   ConfList confList;
-
-   //!< list of IConf to delete
-   ConfList deleteList;
+   //! encoding
+   Encodings encodings;
 };
 
 };
 
-#endif // SINSY_CONF_MANAGER_H_
+#endif // SINSY_C_CONF_H_

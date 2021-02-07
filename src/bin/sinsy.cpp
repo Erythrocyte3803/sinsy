@@ -70,7 +70,7 @@ void usage()
    std::cout << "  options:                                           [def]" << std::endl;
    std::cout << "    -w langs    : languages                          [  j]" << std::endl;
    std::cout << "                  j: Japanese                             " << std::endl;
-   std::cout << "                  (Currently, you can set only Japanese)  " << std::endl;
+   std::cout << "                  c: Chinese                              " << std::endl;
    std::cout << "    -x dir      : dictionary directory               [N/A]" << std::endl;
    std::cout << "    -m htsvoice : HTS voice file                     [N/A]" << std::endl;
    std::cout << "    -o file     : filename of output wav audio       [N/A]" << std::endl;
