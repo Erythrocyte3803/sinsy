@@ -83,6 +83,8 @@ can c an
 cuan cw an
 san s an
 suan sw an
+juan jv an
+quan qv an
 xuan xv an
 ran r an
 ruan rw an
@@ -174,7 +176,7 @@ tie ty e0
 nie ny e0
 nue nv e0
 lie ly e0
-lue lw e0
+lue lv e0
 jie jy e0
 jue jv e0
 qie qy e0
@@ -250,9 +252,7 @@ tian ty en0
 nian ny en0
 lian ly en0
 jian jy en0
-juan jv en0
 qian qy en0
-quan qv en0
 xian xy en0
 yan y en0
 eng eng
@@ -358,7 +358,7 @@ xiong xy ong
 rong r ong
 yong y ong
 ou ou
-pou pw ou
+pou p ou
 mou m ou
 miu my ou
 fou f ou
@@ -391,8 +391,8 @@ du dw u
 tu tw u
 nu nw u
 lu lw u
-gu g u
-ku k u
+gu gw u
+ku kw u
 hu hw u
 zhu zhw u
 chu ch u
