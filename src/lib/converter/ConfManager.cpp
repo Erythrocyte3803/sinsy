@@ -166,7 +166,7 @@ bool ConfManager::setLanguages(const std::string& languages, const std::string& 
          break;
       }
       case 'c' : { // Chinese
-         const std::string TABLE_UTF_8(dirPath + "/chinese.table"); // or use chinese-complete.table
+         const std::string TABLE_UTF_8(dirPath + "/chinese.table");
          const std::string CONF_UTF_8(dirPath + "/chinese.conf");
          const std::string MACRON_TABLE(dirPath + "/chinese.macron");
 
